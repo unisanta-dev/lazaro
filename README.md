@@ -19,19 +19,30 @@ src/
 │   ├── providers/          # Providers globais (tema, DI, etc.)
 │   └── routes/             # Definições de rotas/layouts
 ├── core/
+│   ├── components/         # Widgets para usar nas views
 │   ├── models/             # Entidades (Domain Models) e tipos
-│   ├── viewmodels/         # Lógica de UI (estado + ações) - MVVM
 │   ├── repositories/       # Abstrações de acesso a dados
 │   ├── services/           # Serviços (HTTP, Auth, Cache)
-│   └── utils/              # Helpers puros (formatters, etc.)
-├── features/
-│   └── users/              # Feature de usuários
-│       ├── models/         # Modelos específicos da feature
-│       ├── viewmodels/     # ViewModels específicos da feature
-│       └── views/          # Componentes React (Views)
+│   ├── utils/              # Helpers puros (formatters, etc.)
+│   ├── viewmodels/         # Lógica de UI (estado + ações) - MVVM
+│   └── views/              # Telas do projeto (Views)
+│
 ├── ui/                     # Design system (botões/inputs)
 ├── styles/                 # Estilos globais extras
-└── main.tsx               # Boot da aplicação
+└── main.tsx                # Boot da aplicação
+
+tests/                      # Estrutura de testes (Replica a estrutura do src)
+├── unit/                   # Armazena todos os teste unitário
+│   ├── components/
+│   ├── models/
+│   ├── repositories/
+│   ├── services/
+│   ├── utils/
+│   ├── viewmodels/
+│   └── views/
+├── integration/            # Armazena todos os teste de integração
+│   ├── providers/
+│   └── routes/
 ```
 
 ## 🛠️ Comandos Disponíveis
@@ -65,7 +76,7 @@ npm run format:check
 
 ### View (Visualização)
 
-- **Localização**: `src/features/*/views/`
+- **Localização**: `src/core/views/`
 - **Responsabilidade**: Componentes React que renderizam a UI
 - **Exemplo**: `UserList.tsx` que consome o ViewModel
 
