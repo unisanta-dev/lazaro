@@ -1,0 +1,49 @@
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Ambiente
+.env
+.env.*
+!.env.example
+
+# Cache
+.cache/
+vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
+.vite/
+coverage/
+*.tsbuildinfo
+
+# Tailwind
+tailwind.config.js.timestamp-*
+tailwind.config.cjs.timestamp-*
+tailwind.config.ts.timestamp-*
+
+# Storybook (caso use)
+.storybook-out/
+out/
+
+# Misc
+*.log
