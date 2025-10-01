@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import Login from './core/views/Login'
 import './style.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -10,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <p className="text-base font-normal text-text-secondary">
           Projeto MVVM React + Vite + TypeScript + TailwindCSS
         </p>
+        <Login />
       </div>
     </div>
   </React.StrictMode>
