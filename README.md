@@ -96,7 +96,7 @@ O projeto está configurado com TailwindCSS e inclui uma classe utilitária pers
 
 ```css
 .container-page {
-  @apply max-w-7xl mx-auto px-4;
+  @apply mx-auto max-w-7xl px-4;
 }
 ```
 

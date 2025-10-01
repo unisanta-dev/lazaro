@@ -1,26 +1,26 @@
-import js from "@eslint/js";
-import typescript from "@typescript-eslint/eslint-plugin";
-import typescriptParser from "@typescript-eslint/parser";
-import reactHooks from "eslint-plugin-react-hooks";
-import prettier from "eslint-config-prettier";
+import js from '@eslint/js'
+import typescript from '@typescript-eslint/eslint-plugin'
+import typescriptParser from '@typescript-eslint/parser'
+import reactHooks from 'eslint-plugin-react-hooks'
+import prettier from 'eslint-config-prettier'
 
 export default [
   js.configs.recommended,
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 2022,
-        sourceType: "module",
+        sourceType: 'module',
         ecmaFeatures: {
           jsx: true,
         },
       },
     },
     plugins: {
-      "@typescript-eslint": typescript,
-      "react-hooks": reactHooks,
+      '@typescript-eslint': typescript,
+      'react-hooks': reactHooks,
     },
     rules: {
       ...typescript.configs.recommended.rules,
@@ -29,6 +29,6 @@ export default [
   },
   prettier,
   {
-    ignores: ["dist", "node_modules"],
+    ignores: ['dist', 'node_modules'],
   },
-];
+]
