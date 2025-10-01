@@ -8,6 +8,7 @@ Este é um projeto React + Vite + TypeScript + TailwindCSS seguindo o padrão ar
 - **Vite** - Build tool e dev server
 - **TypeScript** - Superset do JavaScript com tipagem estática
 - **TailwindCSS** - Framework CSS utilitário
+- **ESLint + Prettier** - Ferramentas de linting e formatação
 
 ## 📁 Estrutura do Projeto
 
