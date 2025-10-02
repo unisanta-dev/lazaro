@@ -18,9 +18,11 @@ const Login: React.FC<LoginProps> = () => {
   const { label: _label, textInput: _textInput } = styles()
 
   return (
-    <div className="flex h-screen w-full flex-row items-center justify-center gap-24 bg-background-light p-4">
-      <div className="flex h-2/4 w-2/6 rounded-3xl bg-gradient-to-br from-primary to-secondary"></div>
-      <form className="flex h-2/4 w-2/6 flex-col justify-center gap-6 rounded-2xl bg-background-primary p-8">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-8 bg-background-light p-4 lg:flex-row lg:gap-24">
+      <div className="flex h-1/3 w-full items-center justify-center rounded-3xl bg-background-primary lg:h-2/4 lg:w-2/6">
+        <img src="/logo.jpg" alt="UNISANTA Logo" className="h-32 w-auto object-contain lg:h-80" />
+      </div>
+      <form className="flex h-2/3 w-full flex-col justify-center gap-6 rounded-2xl bg-background-primary p-6 lg:h-2/4 lg:w-2/6 lg:p-8">
         <FlutterInput label="Nome de Usuário" id="username" />
         <FlutterInput label="Digite sua senha" type="password" id="password" />
         <div className="flex items-center justify-between text-sm">
