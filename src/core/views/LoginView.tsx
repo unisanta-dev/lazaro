@@ -3,6 +3,8 @@ import { FlutterInput } from '../components'
 import { motion, AnimatePresence } from 'motion/react'
 import { FiX } from 'react-icons/fi'
 
+import { useLoginViewModel } from '../viewmodels/Login'
+
 interface LoginProps {
   // props opcionais
 }
@@ -10,6 +12,7 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = () => {
   const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false)
   const [email, setEmail] = useState('')
+  const viewModel = useLoginViewModel()
 
   const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault()
@@ -70,9 +73,24 @@ const Login: React.FC<LoginProps> = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
+            onSubmit={e => {
+              e.preventDefault()
+              viewModel.submit()
+            }}
           >
-            <FlutterInput label="E-mail" id="email" />
-            <FlutterInput label="Senha" type="password" id="password" />
+            <FlutterInput
+              label="Nome de Usuário"
+              id="username"
+              value={viewModel.username}
+              valueChanged={viewModel.setUsername}
+            />
+            <FlutterInput
+              label="Digite sua senha"
+              type="password"
+              id="password"
+              value={viewModel.password}
+              valueChanged={viewModel.setPassword}
+            />
 
             <div className="flex items-center justify-between text-sm">
               <label
