@@ -21,11 +21,11 @@ const FlutterInput: React.FC<FlutterInputProps> = ({ id, label, type = 'text' })
         value={username}
         onChange={e => setUsername(e.target.value)}
         placeholder=" "
-        className="peer h-10 w-full rounded-lg border-2 border-gray-400 bg-white px-3 text-gray-950 placeholder-gray-400 focus:outline-none focus:ring-blue-400"
+        className="peer h-12 w-full rounded-xl border-2 border-stroke bg-background-primary px-4 text-text placeholder-gray-400 shadow-soft transition-all duration-200 focus:border-primary focus:outline-none focus:ring-0"
       />
       <label
         htmlFor={id}
-        className={`absolute left-0 select-none rounded-lg ${username ? 'top-[-4px] text-sm' : 'top-1/2'} ml-1 -translate-y-1/2 cursor-text bg-white px-2 text-base text-gray-700 transition-all duration-300 peer-focus:top-[-4px] peer-focus:text-sm peer-focus:text-blue-500`}
+        className={`absolute left-0 select-none rounded-lg ${username ? 'top-[-4px] text-sm' : 'top-1/2'} ml-1 -translate-y-1/2 cursor-text bg-background-primary px-2 text-base font-medium text-text transition-all duration-300 peer-focus:top-[-4px] peer-focus:text-sm peer-focus:text-primary`}
       >
         {label}
       </label>
@@ -33,7 +33,7 @@ const FlutterInput: React.FC<FlutterInputProps> = ({ id, label, type = 'text' })
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-700 hover:text-gray-950"
+          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md p-1 text-text transition-colors duration-200 hover:bg-background-light hover:text-primary"
         >
           <AnimatePresence mode="wait" initial={false}>
             {showPassword ? (
