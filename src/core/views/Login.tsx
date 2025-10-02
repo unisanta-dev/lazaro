@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import { FiEye, FiEyeOff } from 'react-icons/fi'
-import { motion, AnimatePresence } from 'motion/react'
+import React from 'react'
 import { FlutterInput } from '../components'
 import { tv } from 'tailwind-variants'
 
@@ -17,9 +15,6 @@ const styles = tv({
 })
 
 const Login: React.FC<LoginProps> = () => {
-  const [showPassword, setShowPassword] = useState(false)
-  const [username, setUsername] = useState('')
-
   const { label: _label, textInput: _textInput } = styles()
 
   return (
