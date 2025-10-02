@@ -2,6 +2,8 @@ import React from 'react'
 import { FlutterInput } from '../components'
 import { tv } from 'tailwind-variants'
 
+import { useLoginViewModel } from '../viewmodels/Login'
+
 interface LoginProps {
   // props opcionais
 }
@@ -16,13 +18,31 @@ const styles = tv({
 
 const Login: React.FC<LoginProps> = () => {
   const { label: _label, textInput: _textInput } = styles()
+  const viewModel = useLoginViewModel()
 
   return (
     <div className="flex h-screen w-full flex-row items-center justify-center gap-24 bg-background-light p-4">
       <div className="flex h-2/4 w-2/6 rounded-3xl bg-gradient-to-br from-primary to-secondary"></div>
-      <form className="flex h-2/4 w-2/6 flex-col justify-center gap-6 rounded-2xl bg-background-primary p-8">
-        <FlutterInput label="Nome de Usuário" id="username" />
-        <FlutterInput label="Digite sua senha" type="password" id="password" />
+      <form
+        className="flex h-2/4 w-2/6 flex-col justify-center gap-6 rounded-2xl bg-background-primary p-8"
+        onSubmit={e => {
+          e.preventDefault()
+          viewModel.submit()
+        }}
+      >
+        <FlutterInput
+          label="Nome de Usuário"
+          id="username"
+          value={viewModel.username}
+          valueChanged={viewModel.setUsername}
+        />
+        <FlutterInput
+          label="Digite sua senha"
+          type="password"
+          id="password"
+          value={viewModel.password}
+          valueChanged={viewModel.setPassword}
+        />
         <div className="flex items-center justify-between text-sm">
           <label htmlFor="remember-me" className="flex cursor-pointer items-center gap-2 text-text">
             <input
