@@ -1,14 +1,12 @@
-# UnisantaLázaro - MVVM React App
+# UnisantaLázaro - Login View
 
-Este é um projeto React + Vite + TypeScript + TailwindCSS seguindo o padrão arquitetural MVVM (Model-View-ViewModel).
+Essa Branch contém toda a crição da tela de login do Lázaro
 
 ## 🚀 Tecnologias
 
-- **React 18** - Biblioteca para interfaces de usuário
-- **Vite** - Build tool e dev server
-- **TypeScript** - Superset do JavaScript com tipagem estática
-- **TailwindCSS** - Framework CSS utilitário
-- **ESLint + Prettier** - Ferramentas de linting e formatação
+- **Motion** - Biblioteca para animações
+- **React Icons** - Biblioteca com ícones do React
+- **Tailwind Variants** - Biblioteca para sistemizar o CSS do Tailwind
 
 ## 📁 Estrutura do Projeto
 
