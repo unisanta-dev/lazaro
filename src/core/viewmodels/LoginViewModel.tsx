@@ -1,10 +1,8 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type { AuthRepository, User } from '../models/userModel'
-import { fakeAuthRepository } from '../models/userModel'
-
-const authRepo: AuthRepository = fakeAuthRepository
+import type { User } from '../models/userModel'
+import { authService } from '../services/authService'
 
 export function useLoginViewModel() {
   const navigate = useNavigate()
@@ -16,11 +14,11 @@ export function useLoginViewModel() {
 
   const queryClient = useQueryClient()
 
-  const mutation = useMutation<User, Error, { username: string; password: string }>({
-    mutationFn: ({ username, password }) => authRepo.login(username.trim(), password),
-    onSuccess: user => {
-      queryClient.setQueryData(['user'], user)
-      localStorage.setItem('authToken', user.token)
+  const mutation = useMutation<{ user: User }, Error, { username: string; password: string }>({
+    mutationFn: ({ username, password }) => authService.login(username.trim(), password),
+    onSuccess: auth => {
+      queryClient.setQueryData(['user'], auth)
+      localStorage.setItem('authToken', auth.user.token)
       navigate('/main')
     },
     onError: err => {
@@ -48,9 +46,9 @@ export function useLoginViewModel() {
 
     setError(null)
 
-    const user = await mutation.mutateAsync({ username, password })
-    return user || null
-  }, [authRepo, username, password, isValid, navigate])
+    const auth = await mutation.mutateAsync({ username, password })
+    return auth.user || null
+  }, [authService, username, password, isValid, navigate])
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
