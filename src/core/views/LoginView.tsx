@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FlutterInput } from '../components'
 import { motion, AnimatePresence } from 'motion/react'
 import { FiX } from 'react-icons/fi'
@@ -10,15 +10,7 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = () => {
-  const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false)
-  const [email, setEmail] = useState('')
   const viewModel = useLoginViewModel()
-
-  const handleForgotPassword = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsForgotPasswordModalOpen(false)
-    setEmail('')
-  }
 
   return (
     <div className="flex h-screen w-full overflow-hidden">
@@ -107,7 +99,7 @@ const Login: React.FC<LoginProps> = () => {
               </label>
               <button
                 type="button"
-                onClick={() => setIsForgotPasswordModalOpen(true)}
+                onClick={() => viewModel.setIsForgotPasswordModalOpen(true)}
                 className="font-semibold text-primary transition-colors duration-200 hover:text-secondary"
               >
                 Esqueci minha senha
@@ -128,14 +120,14 @@ const Login: React.FC<LoginProps> = () => {
 
       {/* Modal de Recuperação de Senha */}
       <AnimatePresence>
-        {isForgotPasswordModalOpen && (
+        {viewModel.isForgotPasswordModalOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-            onClick={() => setIsForgotPasswordModalOpen(false)}
+            onClick={() => viewModel.setIsForgotPasswordModalOpen(false)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -149,7 +141,7 @@ const Login: React.FC<LoginProps> = () => {
               <div className="mb-6 flex items-center justify-between">
                 <h3 className="text-xx-large font-bold text-text">Recuperar Senha</h3>
                 <button
-                  onClick={() => setIsForgotPasswordModalOpen(false)}
+                  onClick={() => viewModel.setIsForgotPasswordModalOpen(false)}
                   className="rounded-lg p-2 text-text/60 transition-colors duration-200 hover:bg-background-light hover:text-text"
                 >
                   <FiX size={20} />
@@ -162,21 +154,21 @@ const Login: React.FC<LoginProps> = () => {
                   Digite seu e-mail cadastrado e enviaremos um link para redefinir sua senha.
                 </p>
 
-                <form onSubmit={handleForgotPassword} className="space-y-6">
+                <form onSubmit={viewModel.handleForgotPassword} className="space-y-6">
                   <div className="relative w-full">
                     <input
                       type="email"
                       id="recovery-email"
                       name="recovery-email"
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
+                      value={viewModel.email}
+                      onChange={e => viewModel.setEmail(e.target.value)}
                       placeholder=" "
                       required
                       className="peer h-12 w-full rounded-xl border-2 border-stroke bg-background-primary px-4 text-text placeholder-gray-400 shadow-soft transition-all duration-200 focus:border-primary focus:outline-none focus:ring-0"
                     />
                     <label
                       htmlFor="recovery-email"
-                      className={`absolute left-0 select-none rounded-lg ${email ? 'top-[-4px] text-sm' : 'top-1/2'} ml-1 -translate-y-1/2 cursor-text bg-background-primary px-2 text-base font-medium text-text transition-all duration-300 peer-focus:top-[-4px] peer-focus:text-sm peer-focus:text-primary`}
+                      className={`absolute left-0 select-none rounded-lg ${viewModel.email ? 'top-[-4px] text-sm' : 'top-1/2'} ml-1 -translate-y-1/2 cursor-text bg-background-primary px-2 text-base font-medium text-text transition-all duration-300 peer-focus:top-[-4px] peer-focus:text-sm peer-focus:text-primary`}
                     >
                       E-mail
                     </label>
@@ -185,7 +177,7 @@ const Login: React.FC<LoginProps> = () => {
                   <div className="flex gap-3">
                     <button
                       type="button"
-                      onClick={() => setIsForgotPasswordModalOpen(false)}
+                      onClick={() => viewModel.setIsForgotPasswordModalOpen(false)}
                       className="flex-1 rounded-xl border-2 border-stroke bg-background-primary p-4 text-base font-semibold text-text transition-all duration-200 hover:bg-background-light"
                     >
                       Cancelar

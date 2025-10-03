@@ -10,6 +10,14 @@ export function useLoginViewModel() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false)
+  const [email, setEmail] = useState('')
+
+  const handleForgotPassword = (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsForgotPasswordModalOpen(false)
+    setEmail('')
+  }
 
   // Estado derivado, não duplicamos no state para evitar loops
   const isValid = useMemo(
@@ -45,6 +53,11 @@ export function useLoginViewModel() {
     loading,
     error,
     isValid,
+    isForgotPasswordModalOpen,
+    setIsForgotPasswordModalOpen,
+    email,
+    setEmail,
+    handleForgotPassword,
     // ações/commands
     submit,
   }
