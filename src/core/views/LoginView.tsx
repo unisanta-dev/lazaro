@@ -65,10 +65,7 @@ const Login: React.FC<LoginProps> = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            onSubmit={e => {
-              e.preventDefault()
-              viewModel.submit()
-            }}
+            onSubmit={viewModel.handleSubmit}
           >
             <FlutterInput
               label="Nome de Usuário"
@@ -108,11 +105,16 @@ const Login: React.FC<LoginProps> = () => {
 
             <motion.button
               type="submit"
-              className="w-full transform rounded-xl bg-primary p-4 text-base font-semibold text-background-primary shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:bg-secondary hover:shadow-medium"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={viewModel.loading}
+              className={`w-full transform rounded-xl p-4 text-base font-semibold text-background-primary shadow-soft transition-all duration-200 ${
+                viewModel.loading
+                  ? 'cursor-not-allowed bg-primary/70'
+                  : 'bg-primary hover:-translate-y-0.5 hover:bg-secondary hover:shadow-medium'
+              }`}
+              whileHover={viewModel.loading ? {} : { scale: 1.02 }}
+              whileTap={viewModel.loading ? {} : { scale: 0.98 }}
             >
-              Entrar
+              {viewModel.loading ? 'Entrando...' : 'Entrar'}
             </motion.button>
             {viewModel.error && (
               <motion.div

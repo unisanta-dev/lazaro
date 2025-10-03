@@ -30,8 +30,10 @@ export function useLoginViewModel() {
       setError('Preencha usuário e senha válidos')
       return null
     }
+
     setLoading(true)
     setError(null)
+
     try {
       const user = await authRepo.login(username.trim(), password)
       // ex.: salvar token via outro serviço, emitir evento, etc.
@@ -43,6 +45,14 @@ export function useLoginViewModel() {
       setLoading(false)
     }
   }, [authRepo, username, password, isValid])
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault()
+      await submit()
+    },
+    [submit]
+  )
 
   return {
     // propriedades observáveis pela View
@@ -59,6 +69,7 @@ export function useLoginViewModel() {
     setEmail,
     // ações/commands
     handleForgotPassword,
+    handleSubmit,
     submit,
   }
 }
