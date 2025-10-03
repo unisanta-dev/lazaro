@@ -1,8 +1,8 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type { AuthRepository, User } from '../models/LoginModel'
-import { fakeAuthRepository } from '../models/LoginModel'
+import type { AuthRepository, User } from '../models/userModel'
+import { fakeAuthRepository } from '../models/userModel'
 
 const authRepo: AuthRepository = fakeAuthRepository
 

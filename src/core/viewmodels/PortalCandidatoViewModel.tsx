@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import type { User } from '../models/LoginModel'
+import type { User } from '../models/userModel'
 
 export function usePortalCandidatoViewModel() {
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ export function usePortalCandidatoViewModel() {
 
   useEffect(() => {
     try {
-      const token = localStorage.getItem('authToken') || 'token-abc'
+      const token = localStorage.getItem('authToken')
 
       if (!token) {
         navigate('/')
