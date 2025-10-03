@@ -1,6 +1,6 @@
 // viewmodel/useLoginViewModel.ts
 import { useState, useMemo, useCallback } from 'react'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import type { AuthRepository, User } from '../models/LoginModel'
 import { fakeAuthRepository } from '../models/LoginModel'
 
@@ -13,8 +13,13 @@ export function useLoginViewModel() {
   const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false)
   const [email, setEmail] = useState('')
 
+  const queryClient = useQueryClient()
+
   const mutation = useMutation<User, Error, { username: string; password: string }>({
     mutationFn: ({ username, password }) => authRepo.login(username, password),
+    onSuccess: data => {
+      queryClient.setQueryData(['currentUser'], data)
+    },
   })
 
   const handleForgotPassword = (e: React.FormEvent) => {
