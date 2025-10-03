@@ -1,8 +1,7 @@
 import React from 'react'
-import { FlutterInput } from '../components'
 import { motion, AnimatePresence } from 'motion/react'
 import { FiX, FiRefreshCw } from 'react-icons/fi'
-
+import { FlutterInput } from '../components'
 import { useLoginViewModel } from '../viewmodels/LoginViewModel'
 
 interface LoginProps {

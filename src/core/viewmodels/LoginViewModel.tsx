@@ -1,11 +1,12 @@
-// viewmodel/useLoginViewModel.ts
 import { useState, useMemo, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import type { AuthRepository, User } from '../models/LoginModel'
 import { fakeAuthRepository } from '../models/LoginModel'
 
 const authRepo: AuthRepository = fakeAuthRepository
 
 export function useLoginViewModel() {
+  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -36,7 +37,8 @@ export function useLoginViewModel() {
 
     try {
       const user = await authRepo.login(username.trim(), password)
-      // ex.: salvar token via outro serviço, emitir evento, etc.
+      localStorage.setItem('authToken', user.token)
+      navigate('/main')
       return user
     } catch (e: any) {
       setError(e?.message ?? 'Erro desconhecido')
@@ -44,7 +46,7 @@ export function useLoginViewModel() {
     } finally {
       setLoading(false)
     }
-  }, [authRepo, username, password, isValid])
+  }, [authRepo, username, password, isValid, navigate])
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
