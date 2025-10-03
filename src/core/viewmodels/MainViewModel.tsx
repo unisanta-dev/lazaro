@@ -16,7 +16,7 @@ export function useMainViewModel() {
 
         await new Promise(res => setTimeout(res, 100))
         if (!token) {
-          navigate('/login')
+          navigate('/')
           return
         }
 
@@ -29,7 +29,7 @@ export function useMainViewModel() {
         setUser(currentUser)
       } catch (error) {
         console.error('Erro ao carregar usuário:', error)
-        navigate('/login')
+        navigate('/')
       } finally {
         setLoading(false)
       }
@@ -41,7 +41,7 @@ export function useMainViewModel() {
   const handleLogout = useCallback(async () => {
     try {
       localStorage.removeItem('authToken')
-      navigate('/login')
+      navigate('/')
     } catch (error) {
       console.error('Erro ao fazer logout:', error)
     }
