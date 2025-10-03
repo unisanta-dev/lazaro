@@ -19,7 +19,6 @@ export function useLoginViewModel() {
   const mutation = useMutation<User, Error, { username: string; password: string }>({
     mutationFn: ({ username, password }) => authRepo.login(username.trim(), password),
     onSuccess: user => {
-      console.log('Login bem-sucedido:', user)
       queryClient.setQueryData(['user'], user)
       localStorage.setItem('authToken', user.token)
       navigate('/main')
