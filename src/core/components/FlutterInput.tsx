@@ -40,7 +40,7 @@ const FlutterInput: React.FC<FlutterInputProps> = ({
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md p-1 text-text transition-colors duration-200 hover:bg-background-light hover:text-primary"
+          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-md p-1 text-text transition-colors duration-200 hover:bg-background-primary hover:text-primary"
         >
           <AnimatePresence mode="wait" initial={false}>
             {showPassword ? (

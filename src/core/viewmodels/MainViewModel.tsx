@@ -7,8 +7,8 @@ export function useMainViewModel() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
-  // Carrega dados do usuário atual baseado no token de autenticação
   useEffect(() => {
     const loadUser = async () => {
       try {
@@ -48,7 +48,7 @@ export function useMainViewModel() {
   }, [navigate])
 
   const handleNewRegistration = useCallback(() => {
-    console.log('Nova inscrição clicada')
+    window.open('https://unisanta.br/cursos/', '_blank')
   }, [])
 
   const toggleDropdown = useCallback(() => {
@@ -59,16 +59,26 @@ export function useMainViewModel() {
     setIsDropdownOpen(false)
   }, [])
 
+  const openEditModal = useCallback(() => {
+    setIsEditModalOpen(true)
+  }, [])
+
+  const closeEditModal = useCallback(() => {
+    setIsEditModalOpen(false)
+  }, [])
+
   return {
     // propriedades observáveis pela View
     user,
     loading,
     isDropdownOpen,
-
+    isEditModalOpen,
     // ações/commands
     handleLogout,
     handleNewRegistration,
     toggleDropdown,
     closeDropdown,
+    openEditModal,
+    closeEditModal,
   }
 }
