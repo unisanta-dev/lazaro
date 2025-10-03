@@ -1,42 +1,35 @@
 import { useState, useCallback, useEffect } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import type { User } from '../models/LoginModel'
 
-export function useMainViewModel() {
+export function usePortalCandidatoViewModel() {
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const token = localStorage.getItem('authToken') || 'token-abc'
+    try {
+      const token = localStorage.getItem('authToken') || 'token-abc'
 
-        await new Promise(res => setTimeout(res, 100))
-        if (!token) {
-          navigate('/')
-          return
-        }
-
-        const currentUser: User = {
-          id: '1',
-          name: 'Usuário Demo',
-          token: token,
-        }
-
-        setUser(currentUser)
-      } catch (error) {
-        console.error('Erro ao carregar usuário:', error)
+      if (!token) {
         navigate('/')
-      } finally {
-        setLoading(false)
+        return
       }
-    }
 
-    loadUser()
-  }, [navigate])
+      const cachedUser = queryClient.getQueryData<User>(['user'])
+
+      if (cachedUser) setUser(cachedUser)
+    } catch (error) {
+      console.error('Erro ao carregar usuário:', error)
+      navigate('/')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
 
   const handleLogout = useCallback(async () => {
     try {

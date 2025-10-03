@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { FiChevronDown, FiLogOut, FiUserPlus } from 'react-icons/fi'
-import { useMainViewModel } from '../viewmodels/MainViewModel'
+import { usePortalCandidatoViewModel } from '../viewmodels/PortalCandidatoViewModel'
 
 const Header: React.FC = () => {
-  const viewModel = useMainViewModel()
+  const viewModel = usePortalCandidatoViewModel()
 
   return (
     <motion.header
