@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import { AppProviders } from '../providers'
+import { AppProviders, CandidatoProviders } from '../providers'
 import Login from '../../core/views/LoginView'
 
 export default function App() {
@@ -7,7 +7,14 @@ export default function App() {
     <AppProviders>
       <Routes>
         <Route path="/" element={<div>Home</div>} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <CandidatoProviders>
+              <Login />
+            </CandidatoProviders>
+          }
+        />
       </Routes>
     </AppProviders>
   )
