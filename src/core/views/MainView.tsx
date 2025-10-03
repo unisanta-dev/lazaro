@@ -34,10 +34,8 @@ const Main: React.FC<MainProps> = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="mb-8"
           >
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <span className="text-lg font-semibold text-background-primary">
-                Processo Selecionado
-              </span>
+            <div className="sm flex flex-col items-center gap-4 sm:flex-row">
+              <span className="text-lg font-semibold text-background-primary">Processo Aberto</span>
               <select className="w-full rounded-lg border-2 border-background-primary/20 bg-background-primary/10 px-4 py-2 text-background-primary focus:border-background-primary focus:outline-none sm:w-auto [&>option]:bg-background-primary [&>option]:text-text">
                 <option>Selecione</option>
               </select>
@@ -145,10 +143,10 @@ const Main: React.FC<MainProps> = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-text lg:text-2xl">Prova online</h3>
-                        <p className="text-base text-text/70 lg:text-lg">Prova disponível</p>
+                        <p className="text-base text-text/70 lg:text-lg">Pendente</p>
                       </div>
                       <button className="rounded-lg border border-stroke bg-background-light px-4 py-2 text-sm font-medium text-text transition-all duration-200 hover:border-primary hover:bg-primary hover:text-background-primary hover:shadow-medium">
-                        Realizar prova
+                        Verificar
                       </button>
                     </div>
                   </div>

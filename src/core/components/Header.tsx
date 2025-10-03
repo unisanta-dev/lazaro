@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { FiChevronDown, FiLogOut, FiUserPlus } from 'react-icons/fi'
+import { FiChevronDown, FiLogOut, FiUserPlus, FiUser } from 'react-icons/fi'
 import { useMainViewModel } from '../viewmodels/MainViewModel'
 
 const Header: React.FC = () => {
@@ -34,26 +34,16 @@ const Header: React.FC = () => {
         transition={{ delay: 0.4, duration: 0.6 }}
         className="flex items-center gap-4"
       >
-        {/* Botão Nova Inscrição */}
-        <motion.button
-          onClick={viewModel.handleNewRegistration}
-          className="flex items-center gap-2 rounded-xl bg-background-primary px-6 py-3 text-base font-semibold text-primary shadow-soft transition-all duration-200 hover:bg-background-light hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-primary/20"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <FiUserPlus size={20} />
-          Nova inscrição
-        </motion.button>
-
         {/* Dropdown do usuário */}
         <div className="relative">
           <motion.button
             onClick={viewModel.toggleDropdown}
-            className="flex items-center gap-2 rounded-xl bg-background-primary px-6 py-3 text-base font-semibold text-primary shadow-soft transition-all duration-200 hover:bg-background-light focus:outline-none focus:ring-2 focus:ring-primary/20"
+            className="flex items-center justify-center gap-2 rounded-full bg-background-primary p-3 text-base font-semibold text-primary shadow-soft transition-all duration-200 hover:bg-background-light focus:outline-none focus:ring-2 focus:ring-primary/20 sm:gap-2 sm:rounded-xl sm:px-6 sm:py-3"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className="hidden sm:block">
+            <span className="hidden sm:flex sm:items-center sm:gap-2">
+              <FiUser size={16} />
               {viewModel.loading ? 'Carregando...' : viewModel.user?.name || 'Usuário'}
             </span>
             <FiChevronDown
@@ -70,13 +60,24 @@ const Header: React.FC = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 top-full z-20 mt-2 w-full rounded-xl bg-background-primary shadow-strong"
+                className="absolute right-0 top-full z-20 mt-2 w-max min-w-full rounded-xl bg-background-primary shadow-strong"
               >
+                {/* Botão Nova Inscrição */}
+                <motion.button
+                  onClick={viewModel.handleNewRegistration}
+                  className="flex w-full items-center gap-3 rounded-t-xl py-3 pl-3 pr-6 text-base font-semibold text-text transition-all duration-200 hover:bg-primary hover:text-background-primary focus:outline-none sm:px-6"
+                  whileHover={{}}
+                >
+                  <FiUserPlus size={20} />
+                  Nova inscrição
+                </motion.button>
+
+                {/* Botão Sair */}
                 <motion.button
                   onClick={() => {
                     viewModel.handleLogout()
                   }}
-                  className="flex w-full items-center gap-3 rounded-xl px-6 py-3 text-base font-semibold text-text transition-all duration-200 hover:bg-primary hover:text-background-primary focus:outline-none"
+                  className="flex w-full items-center gap-3 rounded-b-xl py-3 pl-3 pr-6 text-base font-semibold text-text transition-all duration-200 hover:bg-primary hover:text-background-primary focus:outline-none sm:px-6"
                   whileHover={{}}
                 >
                   <FiLogOut size={20} />
