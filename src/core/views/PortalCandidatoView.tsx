@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { FiCheck, FiX, FiCalendar, FiClock } from 'react-icons/fi'
+import { FiCheck, FiClock, FiX } from 'react-icons/fi'
 import { usePortalCandidatoViewModel } from '../viewmodels/PortalCandidatoViewModel'
 import { Header } from '../components'
 
@@ -35,9 +35,12 @@ const Main: React.FC<MainProps> = () => {
           >
             <div className="relative">
               <h1 className="mb-4 text-3xl font-bold text-background-primary lg:text-4xl">
-                Bem-vindo ao Portal do Candidato
+                Bem-vindo(a),{' '}
+                {viewModel.loading ? 'Carregando...' : viewModel.user?.name || 'Usuário'}!
               </h1>
-              <p className="text-lg text-background-primary/80 lg:text-xl"></p>
+              <p className="text-lg text-background-primary/80 lg:text-xl">
+                Acompanhe o status da sua inscrição e gerencie seus dados.
+              </p>
             </div>
           </motion.div>
 
@@ -50,9 +53,6 @@ const Main: React.FC<MainProps> = () => {
           >
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-background-primary/20">
-                  <FiCalendar size={20} className="text-background-primary" />
-                </div>
                 <span className="text-xl font-semibold text-background-primary">
                   Processo Selecionado
                 </span>

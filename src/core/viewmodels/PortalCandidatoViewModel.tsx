@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react'
 import { useQueryClient, useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { authService } from '../services/authService'
-import type { User } from '../models/LoginModel'
 
 interface CandidateData {
   course: string
@@ -67,10 +66,6 @@ export function usePortalCandidatoViewModel() {
     queryKey: ['user'],
     queryFn: async () => {
       const token = localStorage.getItem('authToken')
-  useEffect(() => {
-    const initializeData = async () => {
-      try {
-        const token = localStorage.getItem('authToken') || 'token-abc'
 
       if (!token) {
         throw new Error('No token found')
@@ -96,27 +91,10 @@ export function usePortalCandidatoViewModel() {
     }
   }, [error, navigate])
 
-  // Logout seguro com limpeza completa
-        if (!token) {
-          navigate('/')
-          return
-        }
-
-        const cachedUser = queryClient.getQueryData<User>(['user'])
-
-        if (cachedUser) setUser(cachedUser)
-
-        // Carregar dados do candidato
-        await loadCandidateData()
-      } catch (error) {
-        navigate('/')
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    initializeData()
-  }, [loadCandidateData, navigate, queryClient])
+  // Carregar dados do candidato quando o componente monta
+  useEffect(() => {
+    loadCandidateData()
+  }, [loadCandidateData])
 
   const handleLogout = useCallback(async () => {
     try {
@@ -148,8 +126,6 @@ export function usePortalCandidatoViewModel() {
       navigate('/', { replace: true })
     }
   }, [navigate, queryClient])
-    } catch (error) {}
-  }, [navigate])
 
   const handleNewRegistration = useCallback(() => {
     window.open('https://unisanta.br/cursos/', '_blank', 'noopener,noreferrer')
