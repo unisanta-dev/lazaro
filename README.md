@@ -26,6 +26,7 @@ O **UnisantaLázaro** é uma ferramenta estratégica que ajuda a universidade a 
 - **PostCSS** - Sistema de plugins em JavaScript para transformar código CSS, permitindo que desenvolvedores usem sintaxe moderna
 - **Motion** - Biblioteca para animações
 - **React Icons** - Biblioteca com ícones do React
+- **TanStack** - Ecossistema de ferramentas de código aberto para o desenvolvimento web
 
 ## 📁 Estrutura do Projeto
 
