@@ -57,8 +57,8 @@ export function useLoginViewModel() {
     setIsForgotPasswordModalOpen,
     email,
     setEmail,
-    handleForgotPassword,
     // ações/commands
+    handleForgotPassword,
     submit,
   }
 }
