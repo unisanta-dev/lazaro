@@ -3,7 +3,7 @@ import { FlutterInput } from '../components'
 import { motion, AnimatePresence } from 'motion/react'
 import { FiX } from 'react-icons/fi'
 
-import { useLoginViewModel } from '../viewmodels/Login'
+import { useLoginViewModel } from '../viewmodels/LoginViewModel'
 
 interface LoginProps {
   // props opcionais

@@ -1,7 +1,7 @@
 // viewmodel/useLoginViewModel.ts
 import { useState, useMemo, useCallback } from 'react'
-import type { AuthRepository, User } from '../models/Login'
-import { fakeAuthRepository } from '../models/Login'
+import type { AuthRepository, User } from '../models/LoginModel'
+import { fakeAuthRepository } from '../models/LoginModel'
 
 const authRepo: AuthRepository = fakeAuthRepository
 
