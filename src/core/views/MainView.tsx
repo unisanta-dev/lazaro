@@ -76,12 +76,14 @@ const Main: React.FC<MainProps> = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute right-0 top-full mt-2 min-w-full rounded-xl bg-background-primary py-2 shadow-strong"
+                  className="absolute right-0 top-full z-20 mt-2 min-w-full rounded-xl bg-background-primary shadow-strong"
                 >
                   <motion.button
-                    onClick={viewModel.handleLogout}
-                    className="flex w-full items-center gap-3 px-4 py-2 text-sm font-semibold text-text transition-all duration-200 hover:bg-background-light hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    whileHover={{ x: 4 }}
+                    onClick={() => {
+                      viewModel.handleLogout()
+                    }}
+                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-text transition-all duration-200 hover:bg-primary hover:text-background-primary focus:outline-none"
+                    whileHover={{}}
                   >
                     <FiLogOut size={16} />
                     Sair

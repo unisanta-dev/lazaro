@@ -41,7 +41,7 @@ export function useMainViewModel() {
   const handleLogout = useCallback(async () => {
     try {
       localStorage.removeItem('authToken')
-      navigate('/')
+      navigate('/', { replace: true })
     } catch (error) {
       console.error('Erro ao fazer logout:', error)
     }
