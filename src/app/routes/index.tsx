@@ -7,14 +7,10 @@ export default function App() {
     <AppProviders>
       <Routes>
         <Route path="/" element={<div>Home</div>} />
-        <Route
-          path="/login"
-          element={
-            <CandidatoProviders>
-              <Login />
-            </CandidatoProviders>
-          }
-        />
+        <Route element={<CandidatoProviders />}>
+          <Route path="/home" element={<div>BATATA</div>} />
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Routes>
     </AppProviders>
   )

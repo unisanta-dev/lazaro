@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Outlet } from 'react-router-dom'
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 const queryClientCandidato = new QueryClient()
@@ -9,8 +10,12 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   return <BrowserRouter>{children}</BrowserRouter>
 }
 
-export function CandidatoProviders({ children }: { children: React.ReactNode }) {
-  return <QueryClientProvider client={queryClientCandidato}>{children}</QueryClientProvider>
+export function CandidatoProviders() {
+  return (
+    <QueryClientProvider client={queryClientCandidato}>
+      <Outlet />
+    </QueryClientProvider>
+  )
 }
 
 export function AdminProviders({ children }: { children: React.ReactNode }) {
