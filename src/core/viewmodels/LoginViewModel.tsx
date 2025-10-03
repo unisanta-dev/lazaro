@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
 import type { AuthRepository, User } from '../models/LoginModel'
 import { fakeAuthRepository } from '../models/LoginModel'
 
@@ -9,10 +10,13 @@ export function useLoginViewModel() {
   const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false)
   const [email, setEmail] = useState('')
+
+  const mutation = useMutation<User, Error, { username: string; password: string }>({
+    mutationFn: ({ username, password }) => authRepo.login(username.trim(), password),
+  })
 
   const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,19 +36,17 @@ export function useLoginViewModel() {
       return null
     }
 
-    setLoading(true)
     setError(null)
 
     try {
-      const user = await authRepo.login(username.trim(), password)
+      const user = await mutation.mutateAsync({ username, password })
       localStorage.setItem('authToken', user.token)
       navigate('/main')
+      // ex.: salvar token via outro serviço, emitir evento, etc.
       return user
     } catch (e: any) {
       setError(e?.message ?? 'Erro desconhecido')
       return null
-    } finally {
-      setLoading(false)
     }
   }, [authRepo, username, password, isValid, navigate])
 
@@ -62,7 +64,7 @@ export function useLoginViewModel() {
     setUsername,
     password,
     setPassword,
-    loading,
+    loading: mutation.isPending,
     error,
     isValid,
     isForgotPasswordModalOpen,
@@ -72,6 +74,5 @@ export function useLoginViewModel() {
     // ações/commands
     handleForgotPassword,
     handleSubmit,
-    submit,
   }
 }
