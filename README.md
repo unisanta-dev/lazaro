@@ -1,11 +1,32 @@
-# UnisantaLázaro - Login View
+# UnisantaLázaro - CRM Portal de Inscrição
 
-Essa Branch contém toda a crição da tela de login do Lázaro. A tela de login do Lazaro foi desenvolvida com um design moderno e responsivo, seguindo a identidade visual da UNISANTA. A interface é dividida em duas seções principais: branding (lado esquerdo) e formulário de login (lado direito).
+O **UnisantaLázaro** é um sistema de **CRM (Customer Relationship Management)** desenvolvido para a **Universidade Santa Cecília (Unisanta)**, com o objetivo de **gerenciar e otimizar todo o processo de inscrição de candidatos**.
+
+Este portal permite que a equipe de admissões acompanhe cada candidato desde a **primeira triagem** até a sua efetiva matrícula como aluno, garantindo uma experiência mais organizada, ágil e eficiente.
+
+### Principais objetivos do sistema:
+
+- **Triagem de candidatos:** registrar e analisar dados dos candidatos de forma estruturada.
+- **Gerenciamento de etapas:** acompanhar o progresso do candidato em cada fase do processo de inscrição.
+- **Comunicação centralizada:** facilitar o contato e acompanhamento por parte da equipe administrativa.
+- **Registro histórico:** manter histórico completo do processo de cada candidato, permitindo relatórios e análises futuras.
+
+O **UnisantaLázaro** é uma ferramenta estratégica que ajuda a universidade a **otimizar o fluxo de inscrições**, reduzir retrabalho e melhorar a experiência tanto dos candidatos quanto da equipe interna.
 
 ## 🚀 Tecnologias
 
+- **React 18** - Biblioteca para criar e gerenciar UIs
+- **Vite** - Ferramenta de contrução para servidor de desenvolvimento de projetos frontend
+- **Tailwind** - Framework CSS, que fornece classes pré-definidas para estilizar páginas web diretamente no HTML
+- **Zod** - Biblioteca JavaScript/TypeScript para validação de esquemas de dados
+- **TypeScript** - Superconjunto da linguagem de programação JavaScript criado pela Microsoft que adiciona tipagem estática opcional e recursos de programação orientada a objetos
+- **Prettier** - Formatador de código opinativo que automatiza a formatação de código
+- **ESLint** - Ferramenta de "linter" para JavaScript e TypeScript que realiza análise estática de código, identificando problemas de estilo e padrões problemáticos
+- **Autoprefixer** - Pós-processador de CSS que adiciona automaticamente os prefixos de fornecedor (como -webkit-, -moz-, etc.)
+- **PostCSS** - Sistema de plugins em JavaScript para transformar código CSS, permitindo que desenvolvedores usem sintaxe moderna
 - **Motion** - Biblioteca para animações
 - **React Icons** - Biblioteca com ícones do React
+- **TanStack** - Ecossistema de ferramentas de código aberto para o desenvolvimento web
 
 ## 📁 Estrutura do Projeto
 

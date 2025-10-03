@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Login from './core/views/LoginView'
+import Routes from './app/routes'
 import './style.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Login />
+    <Routes />
   </React.StrictMode>
 )
