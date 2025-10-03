@@ -15,7 +15,6 @@ export const fakeAuthRepository: AuthRepository = {
     await new Promise(res => setTimeout(res, 400))
     // Faz a validação fake do usuário e senha
     if (email === 'user' && password === 'password') {
-      console.log(`FOII ${email} - ${password}`)
       return { id: '1', name: 'Demo User', token: 'token-abc' }
     }
     throw new Error('Credenciais inválidas')

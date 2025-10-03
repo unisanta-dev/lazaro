@@ -21,13 +21,13 @@ export function useLoginViewModel() {
 
   // Estado derivado, não duplicamos no state para evitar loops
   const isValid = useMemo(
-    () => username.trim().length > 0 && password.length >= 6,
+    () => username.trim().length > 0 && password.length > 0,
     [username, password]
   )
 
   const submit = useCallback(async (): Promise<User | null> => {
     if (!isValid) {
-      setError('Preencha usuário e senha válidos (senha ≥ 6 caracteres)')
+      setError('Preencha usuário e senha válidos')
       return null
     }
     setLoading(true)

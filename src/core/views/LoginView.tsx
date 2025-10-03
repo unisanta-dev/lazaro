@@ -114,6 +114,16 @@ const Login: React.FC<LoginProps> = () => {
             >
               Entrar
             </motion.button>
+            {viewModel.error && (
+              <motion.div
+                className="flex items-center justify-center rounded-lg bg-red-100 p-4 text-sm text-red-700"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                {viewModel.error}
+              </motion.div>
+            )}
           </motion.form>
         </div>
       </motion.div>
