@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlutterInput } from '../components'
 import { motion, AnimatePresence } from 'motion/react'
-import { FiX } from 'react-icons/fi'
+import { FiX, FiRefreshCw } from 'react-icons/fi'
 
 import { useLoginViewModel } from '../viewmodels/LoginViewModel'
 
@@ -114,7 +114,10 @@ const Login: React.FC<LoginProps> = () => {
               whileHover={viewModel.loading ? {} : { scale: 1.02 }}
               whileTap={viewModel.loading ? {} : { scale: 0.98 }}
             >
-              {viewModel.loading ? 'Entrando...' : 'Entrar'}
+              <div className="flex items-center justify-center gap-3">
+                {viewModel.loading && <FiRefreshCw className="h-4 w-4 animate-spin" />}
+                <span>{viewModel.loading ? 'Entrando...' : 'Entrar'}</span>
+              </div>
             </motion.button>
             {viewModel.error && (
               <motion.div
