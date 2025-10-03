@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { FiEdit, FiCheck, FiAlertCircle, FiX } from 'react-icons/fi'
-import { useMainViewModel } from '../viewmodels/MainViewModel'
+import { usePortalCandidatoViewModel } from '../viewmodels/PortalCandidatoViewModel'
 import { Header } from '../components'
 
 interface MainProps {
@@ -9,8 +9,7 @@ interface MainProps {
 }
 
 const Main: React.FC<MainProps> = () => {
-  const viewModel = useMainViewModel()
-
+  const viewModel = usePortalCandidatoViewModel()
   return (
     <div
       className="min-h-screen w-full bg-cover bg-center bg-no-repeat"
